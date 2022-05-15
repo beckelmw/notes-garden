@@ -1,0 +1,42 @@
+{
+  "name": "notes-garden",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm:dev:*\" \"npm:site:*\"",
+    "dev:routes": "nodemon --watch src/pages ./build/routes.js",
+    "dev:site": "wrangler pages dev ./public --kv SITE",
+    "dev:tailwind": "tailwindcss -c ./tailwind.config.cjs -i ./src/css/site.css -o ./public/site.css --watch",
+    "dev:worker": "MODE=development node ./build.js",
+    "dev:error-pages": "nodemon --watch src/pages ./build/error-pages.js",
+    "dev:favicon": "node ./build/favicon.js",
+    "build": "concurrently \"npm:build:*\"",
+    "prebuild": "node ./build/routes.js",
+    "build:worker": "MODE=production node ./build.js",
+    "build:tailwind": "tailwindcss -c ./tailwind.config.cjs -i ./src/css/site.css -o ./public/site.css --minify",
+    "build:error-pages": "node ./build/error-pages.js",
+    "build:favicon": "node ./build/favicon.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "htm": "^3.1.1",
+    "itty-router": "^2.6.1",
+    "itty-router-extras": "^0.4.2",
+    "preact": "^10.7.2",
+    "preact-render-to-string": "^5.2.0",
+    "tailwindcss": "^3.0.24"
+  },
+  "devDependencies": {
+    "concurrently": "^7.1.0",
+    "esbuild": "^0.14.39",
+    "globby": "^13.1.1",
+    "hasha": "^5.2.2",
+    "nodemon": "^2.0.16",
+    "wrangler": "^0.0.0-f584ae6"
+  },
+  "imports": {
+    "#components/*": "./src/components/*",
+    "#lib/*": "./src/lib/*",
+    "#pages/*": "./src/pages/*"
+  }
+}

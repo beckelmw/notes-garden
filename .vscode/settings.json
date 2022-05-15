@@ -1,0 +1,13 @@
+{
+    "cSpell.words": [
+        "esbuild",
+        "hasha",
+        "Htmx",
+        "miniflare",
+        "prebuild",
+        "tailwindcss"
+    ],
+    "emmet.includeLanguages": {
+        "javascript": "html"
+    }
+}

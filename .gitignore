@@ -1,0 +1,9 @@
+node_modules
+.env
+dist
+.mf
+public/404.html
+public/site.css
+public/favicon.svg
+public/_worker.js
+.DS_Store
